@@ -2,6 +2,7 @@ import Image from "next/image";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { fetchProjects } from "@/lib/projects";
 import { RevealItem, RevealList } from "../motion/Reveals";
+import Link from "next/link";
 
 function getErrorMessage(err: unknown): string {
     if (err instanceof Error) return err.message;
@@ -48,13 +49,14 @@ export default async function Portfolio() {
                                 <article className="card flex flex-col">
                                     <div className="relative mb-4 aspect-[4/3] w-full overflow-hidden rounded-t-2xl shadow-lg">
                                         {p.image ? (
-                                            <Image
-                                                src={p.image}
-                                                alt={p.title}
-                                                fill
-                                                className="object-cover"
-                                                sizes="(min-width:1024px) 33vw, (min-width:640px) 50vw, 100vw"
-                                            />
+                                            <a href={p.links.live} target="_blanck">
+                                                <Image
+                                                    src={p.image}
+                                                    alt={p.title}
+                                                    fill
+                                                    className="object-cover"
+                                                    sizes="(min-width:1024px) 33vw, (min-width:640px) 50vw, 100vw"
+                                                /></a>
                                         ) : (
                                             <div className="flex h-full w-full items-center justify-center bg-foreground text-muted">
                                                 No image
