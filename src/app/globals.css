@@ -60,7 +60,7 @@ body {
 
 .wrapper{ @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8; }
 .wrapper-narrow{ @apply mx-auto max-w-5xl px-4 sm:px-6 lg:px-8; }
-.section{ @apply py-section; }
+.section{ @apply py-section-sm; }
 .section-sm{ @apply py-section-sm; }
 
 .card{ @apply bg-surface border border-border rounded-2xl p-6 shadow-card; }
