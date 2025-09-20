@@ -2,7 +2,6 @@ import Image from "next/image";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { fetchProjects } from "@/lib/projects";
 import { RevealItem, RevealList } from "../motion/Reveals";
-import Link from "next/link";
 
 function getErrorMessage(err: unknown): string {
     if (err instanceof Error) return err.message;
