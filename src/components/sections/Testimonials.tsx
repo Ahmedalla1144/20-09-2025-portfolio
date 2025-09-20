@@ -32,7 +32,7 @@ export default function Testimonials() {
                     <Swiper spaceBetween={24} slidesPerView={1} breakpoints={{ 768: { slidesPerView: 2 } }}>
                         {data.map((t, i) => (
                             <SwiperSlide key={i}>
-                                <div className="card h-full">
+                                <div className="card h-full p-6 ml-4">
                                     <p className="text-lg leading-relaxed">“{t.quote}”</p>
                                     <p className="mt-4 font-medium">
                                         {t.author} · <span className="text-muted">{t.role}</span>

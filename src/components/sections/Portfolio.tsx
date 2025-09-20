@@ -64,13 +64,13 @@ export default async function Portfolio() {
                                         )}
                                     </div>
 
-                                    <h3 className="text-lg font-semibold">{p.title}</h3>
+                                    <h3 className="text-lg font-semibold px-6">{p.title}</h3>
                                     {p.description && (
-                                        <p className="mt-2 text-muted">{p.description}</p>
+                                        <p className="mt-2 text-muted px-6">{p.description}</p>
                                     )}
 
                                     {p.tags?.length > 0 && (
-                                        <div className="mt-3 flex flex-wrap gap-2">
+                                        <div className="mt-3 flex flex-wrap gap-2 px-6">
                                             {p.tags.map((t) => (
                                                 <span
                                                     key={`${p.id}-${t}`}
@@ -83,7 +83,7 @@ export default async function Portfolio() {
                                     )}
 
                                     {(p.links.live || p.links.source) && (
-                                        <div className="mt-4 flex gap-3">
+                                        <div className="mt-4 flex gap-3 px-6 py-6">
                                             {p.links.live && (
                                                 <a
                                                     href={p.links.live}

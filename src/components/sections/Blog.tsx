@@ -25,7 +25,7 @@ export default function Blog() {
                     {posts.map((p) => (
                         <RevealItem key={p.id}>
                             <article className="card flex flex-col">
-                                <div className="relative mb-4 aspect-[16/9] w-full overflow-hidden rounded-xl border border-border">
+                                <div className="relative mb-4 aspect-[16/9] w-full overflow-hidden rounded-t-xl border border-border">
                                     {p.image ? (
                                         <Image
                                             src={p.image}
@@ -41,12 +41,12 @@ export default function Blog() {
                                     )}
                                 </div>
 
-                                <div className="text-sm text-muted">{formatDate(p.date)}</div>
-                                <h3 className="mt-1 text-lg font-semibold">{p.title}</h3>
-                                <p className="mt-2 text-muted">{p.excerpt}</p>
+                                <div className="text-sm text-muted px-6">{formatDate(p.date)}</div>
+                                <h3 className="mt-1 text-lg font-semibold px-6">{p.title}</h3>
+                                <p className="mt-2 text-muted px-6">{p.excerpt}</p>
 
                                 {p.tags?.length ? (
-                                    <div className="mt-3 flex flex-wrap gap-2">
+                                    <div className="mt-3 flex flex-wrap gap-2 px-6">
                                         {p.tags.map((t) => (
                                             <span
                                                 key={`${p.id}-${t}`}
@@ -58,7 +58,7 @@ export default function Blog() {
                                     </div>
                                 ) : null}
 
-                                <div className="mt-4">
+                                <div className="mt-4 px-6 py-6">
                                     <Button
                                         href={p.href || "#contact"}
                                         variant={p.href ? "ghost" : "primary"}

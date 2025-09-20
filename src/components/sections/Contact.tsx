@@ -33,7 +33,7 @@ export default function Contact() {
                 <div className="wrapper">
                     <SectionHeading kicker="Get In Touch" title="Contact" />
 
-                    <form onSubmit={onSubmit} className="card grid gap-4 sm:grid-cols-2">
+                    <form onSubmit={onSubmit} className="card grid gap-4 sm:grid-cols-2 p-6">
                         <div className="sm:col-span-1">
                             <label className="mb-2 block text-sm text-muted">Name</label>
                             <input
