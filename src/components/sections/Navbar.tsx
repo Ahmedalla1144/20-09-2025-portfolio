@@ -6,6 +6,7 @@ import { siteConfig } from "@/config/site";
 import { useScrollSpy } from "@/hooks/useScrollSpy";
 import { cn } from "@/lib/utils";
 import ThemeToggle from "../ui/ThemeToggle";
+import { SectionReveal } from "../motion/Reveals";
 
 export default function Navbar() {
     const [open, setOpen] = useState(false);
@@ -13,7 +14,7 @@ export default function Navbar() {
     const active = useScrollSpy(ids, 80);
 
     return (
-        <header className="sticky top-0 z-50 border-b border-border bg-background/80 backdrop-blur">
+        <SectionReveal direction="down" distance={40} className="sticky top-0 z-50 border-b border-border bg-background/80 backdrop-blur">
             <div className="wrapper flex items-center justify-between py-3">
                 <Link href="/" className="font-semibold tracking-tight">
                     {siteConfig.name}
@@ -79,6 +80,6 @@ export default function Navbar() {
                     </div>
                 </div>
             )}
-        </header>
+        </SectionReveal>
     );
 }

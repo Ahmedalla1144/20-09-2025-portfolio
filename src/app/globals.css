@@ -73,3 +73,22 @@ body {
 .h2{ @apply text-display-2 font-semibold tracking-tight; }
 .text-muted{ @apply text-muted; }
 [id]{ scroll-margin-top: 5rem; }
+
+
+@keyframes fade-in-out {
+  0%, 100% { opacity: .25; transform: translateY(2px); }
+  50%      { opacity: 1;    transform: translateY(0); }
+}
+
+.letter-fx {
+  display: inline-block;
+  animation-name: fade-in-out;
+  animation-duration: 1.6s;                /* tweak speed */
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  will-change: opacity, transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .letter-fx { animation: none; }
+}

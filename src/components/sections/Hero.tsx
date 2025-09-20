@@ -1,20 +1,31 @@
 import Image from "next/image";
 import Button from "@/components/ui/Button";
 import { siteConfig } from "@/config/site";
+import AnimatedText from "../ui/AnimatedText";
+import { SectionReveal } from "../motion/Reveals";
 
 export default function Hero() {
     return (
-        <div className="wrapper grid items-center gap-10 md:grid-cols-2">
+        <SectionReveal className="wrapper grid items-center gap-10 md:grid-cols-2" direction="right" distance={300} amount={0.8}>
             <div className="order-2 md:order-1">
                 <p className="mb-3 text-sm font-medium tracking-wide text-muted uppercase">
                     {siteConfig.role}
                 </p>
 
-                <h1 className="h1 animate-pulse">
-                    Hi, I’m <span className="text-primary animate-none">{siteConfig.name}</span>
-                    <span className="animate-pin">.</span>
-                    <br />
-                    {siteConfig.tagline}
+                <h1 className="h1">
+                    <AnimatedText text="Hi, I’m " step={0.07} />
+                    <AnimatedText
+                        text={siteConfig.name}
+                        className="text-primary"
+                        startDelay={0.5}
+                        step={0.07}
+                    />
+                    .<br />
+                    <AnimatedText
+                        text={siteConfig.tagline}
+                        startDelay={1.1}
+                        step={0.05}
+                    />.
                 </h1>
 
                 <div className="mt-8 flex flex-wrap gap-3">
@@ -67,6 +78,6 @@ export default function Hero() {
                     priority
                 />
             </div>
-        </div>
+        </SectionReveal>
     );
 }

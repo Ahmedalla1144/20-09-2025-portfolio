@@ -2,7 +2,7 @@ export const siteConfig = {
     name: "Ahmed Alaa",
     role: "Full Stack Web Developer",
     tagline:
-        "I build fast, accessible web apps with Next.js, Laravel, and clean Code.",
+        "I build fast, accessible web apps with Next.js, Laravel, and clean Code",
     socials: {
         github: "https://github.com/Ahmedalla1144",
         linkedin: "https://www.linkedin.com/in/ahmed-alaa1144/",
