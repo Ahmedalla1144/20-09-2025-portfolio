@@ -12,7 +12,6 @@
   --on-accent: #ffffff;
 }
 
-@media (prefers-color-scheme: dark) {
   .dark {
   --background: #020617;
   --foreground: #e2e8f0;
@@ -22,7 +21,6 @@
   --primary: #6366f1;
   --accent: #38bdf8;
   --surface: #0b1220; 
-}
 }
 
 @theme inline {
@@ -83,7 +81,7 @@ body {
 .letter-fx {
   display: inline-block;
   animation-name: fade-in-out;
-  animation-duration: 1.6s;                /* tweak speed */
+  animation-duration: 1.6s;
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
   will-change: opacity, transform;
