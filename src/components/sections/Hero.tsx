@@ -6,7 +6,7 @@ import { SectionReveal } from "../motion/Reveals";
 
 export default function Hero() {
     return (
-        <SectionReveal className="wrapper grid items-center gap-10 md:grid-cols-2" direction="right" distance={300} amount={0.8}>
+        <SectionReveal className="wrapper grid items-center gap-10 md:grid-cols-2" direction="right" distance={300}>
             <div className="order-2 md:order-1">
                 <p className="mb-3 text-sm font-medium tracking-wide text-muted uppercase">
                     {siteConfig.role}

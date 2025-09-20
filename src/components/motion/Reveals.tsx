@@ -1,18 +1,13 @@
 "use client";
 
-import React, { useRef } from "react";
-import { motion, useInView, useReducedMotion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 
 type Dir = "up" | "down" | "left" | "right";
-
-function offsetBy(direction: Dir, distance: number) {
-    switch (direction) {
-        case "up": return { y: distance };
-        case "down": return { y: -distance };
-        case "left": return { x: distance };
-        case "right": return { x: -distance };
-    }
-}
+const offsetBy = (d: Dir, dist: number) =>
+    d === "up" ? { y: dist } :
+        d === "down" ? { y: -dist } :
+            d === "left" ? { x: dist } :
+                { x: -dist };
 
 type SectionRevealProps = {
     children: React.ReactNode;
@@ -28,23 +23,20 @@ export function SectionReveal({
     className,
     direction = "up",
     distance = 24,
-    amount = 0.2,
+    amount = 0.08,
     once = false,
 }: SectionRevealProps) {
-    const ref = useRef<HTMLDivElement>(null);
-    const inView = useInView(ref, { amount, margin: "0px 0px -10% 0px" });
     const reduce = useReducedMotion();
     const offset = offsetBy(direction, distance);
-
     return (
         <motion.section
-            ref={ref}
             className={className}
-            initial="hidden"
-            animate={inView ? "visible" : once ? "visible" : "hidden"}
-            variants={{
-                hidden: { opacity: 0, ...offset },
-                visible: { opacity: 1, x: 0, y: 0 },
+            initial={{ opacity: 0, ...offset }}
+            whileInView={{ opacity: 1, x: 0, y: 0 }}
+            viewport={{
+                amount,
+                once,
+                margin: "0px 0px -1px 0px",
             }}
             transition={{ duration: reduce ? 0 : 0.6, ease: "easeOut" }}
         >
@@ -67,27 +59,16 @@ export function RevealList({
     className,
     stagger = 0.08,
     delay = 0.05,
-    amount = 0.15,
+    amount = 0.08,
     once = false,
 }: RevealListProps) {
-    const ref = useRef<HTMLDivElement>(null);
-    const inView = useInView(ref, { amount, margin: "0px 0px -10% 0px" });
-    const reduce = useReducedMotion();
-
     return (
         <motion.div
-            ref={ref}
             className={className}
             initial="hidden"
-            animate={inView ? "visible" : once ? "visible" : "hidden"}
-            variants={{
-                hidden: {},
-                visible: {},
-            }}
-            transition={{
-                staggerChildren: reduce ? 0 : stagger,
-                delayChildren: reduce ? 0 : delay,
-            }}
+            whileInView="visible"
+            viewport={{ amount, once, margin: "0px 0px -1px 0px" }}
+            transition={{ staggerChildren: stagger, delayChildren: delay }}
         >
             {children}
         </motion.div>
@@ -95,13 +76,14 @@ export function RevealList({
 }
 
 export function RevealItem({ children }: { children: React.ReactNode }) {
+    const reduce = useReducedMotion();
     return (
         <motion.div
             variants={{
                 hidden: { opacity: 0, y: 16 },
                 visible: { opacity: 1, y: 0 },
             }}
-            transition={{ duration: 0.45, ease: "easeOut" }}
+            transition={{ duration: reduce ? 0 : 0.45, ease: "easeOut" }}
         >
             {children}
         </motion.div>
