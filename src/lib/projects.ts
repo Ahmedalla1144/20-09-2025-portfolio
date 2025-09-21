@@ -4,8 +4,8 @@ export interface ApiProject {
   description?: string;
   image?: string;
   tags?: string[] | string;
-  source?: string; // GitHub URL
-  visit?: string; // Live demo URL
+  source?: string;
+  visit?: string;
   created_at?: string;
   updated_at?: string;
   deleted_at?: string | null;
@@ -18,11 +18,11 @@ export type Project = {
   image?: string;
   tags: string[];
   links: { live?: string; source?: string };
-  createdAt?: string; // ISO
-  updatedAt?: string; // ISO
+  createdAt?: string; 
+  updatedAt?: string; 
 };
 
-const API_URL = "https://www.ahmed.alaa1144.apis.mrbotusa.com/api/projects";
+const API_URL = "https://www.ahmed.alaa1144.apis.mrbotusa.com/api/projects/1";
 
 const isNonEmptyString = (v: unknown): v is string =>
   typeof v === "string" && v.trim().length > 0;
@@ -75,7 +75,6 @@ function extractList(json: unknown): ApiProject[] {
   return [];
 }
 
-/** Fetch + normalize + sort */
 export async function fetchProjects(
   opts: { includeDeleted?: boolean; signal?: AbortSignal } = {}
 ): Promise<Project[]> {
@@ -98,7 +97,6 @@ export async function fetchProjects(
 
   const projects = list.map(mapProject);
 
-  // Sort: updated desc, then created desc
   projects.sort((a, b) => {
     const ua = a.updatedAt ?? a.createdAt ?? "";
     const ub = b.updatedAt ?? b.createdAt ?? "";

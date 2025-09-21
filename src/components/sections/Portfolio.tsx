@@ -29,14 +29,14 @@ export default async function Portfolio() {
                 <SectionHeading kicker="Selected Work" title="Portfolio" />
 
                 {error && (
-                    <div className="card border-red-200">
+                    <div className="card border-red-200 p-6">
                         <p className="font-medium text-red-600">Couldn’t load projects.</p>
                         <p className="mt-1 text-sm text-muted">{error}</p>
                     </div>
                 )}
 
                 {!error && projects.length === 0 && (
-                    <div className="card">
+                    <div className="card p-6">
                         <p className="text-muted">No projects found.</p>
                     </div>
                 )}
@@ -48,7 +48,7 @@ export default async function Portfolio() {
                                 <article className="card flex flex-col">
                                     <div className="relative mb-4 aspect-[4/3] w-full overflow-hidden rounded-t-2xl shadow-lg">
                                         {p.image ? (
-                                            // <a href={p.links.live} target="_blanck">
+                                            <a href={p.links.live} target="_blanck">
                                                 <Image
                                                     src={p.image}
                                                     alt={p.title}
@@ -56,7 +56,7 @@ export default async function Portfolio() {
                                                     className="object-cover"
                                                     sizes="(min-width:1024px) 33vw, (min-width:640px) 50vw, 100vw"
                                                 />
-                                                // </a>
+                                                </a>
                                         ) : (
                                             <div className="flex h-full w-full items-center justify-center bg-foreground text-muted">
                                                 No image
